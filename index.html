@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rachana Dutta — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pk1:#ffd6e7;--pk2:#ffadd2;--pk3:#f472b6;--pk4:#db2777;
+  --lav:#e9d5ff;--gb:rgba(255,255,255,0.26);--gb2:rgba(255,255,255,0.5);
+  --gbd:rgba(255,255,255,0.48);--gbs:rgba(244,114,182,0.18);
+  --td:#4a1942;--tm:#7c3d6e;--tl:#c084c8;
+}
+html{scroll-behavior:smooth;cursor:none !important}
+body{font-family:'DM Sans',sans-serif;background:#fff0f6;color:var(--td);overflow-x:hidden;cursor:none !important}
+*{cursor:none !important}
+
+/* ─── CURSOR ─── */
+#cur{
+  position:fixed;top:-100px;left:-100px;
+  pointer-events:none;z-index:99999;
+  font-size:30px;line-height:1;
+  transform:translate(-50%,-50%);
+  will-change:transform;
+  transition:none;
+}
+
+/* ─── BG BLOBS ─── */
+.blobs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.52;animation:fb 13s ease-in-out infinite alternate}
+.b1{width:460px;height:460px;background:#fbb6ce;top:-100px;left:-120px;animation-delay:0s}
+.b2{width:340px;height:340px;background:#c4b5fd;top:28%;right:-90px;animation-delay:-4s}
+.b3{width:280px;height:280px;background:#fde68a;bottom:8%;left:18%;animation-delay:-8s}
+.b4{width:220px;height:220px;background:#a5f3fc;bottom:22%;right:12%;animation-delay:-2s}
+@keyframes fb{from{transform:translate(0,0) scale(1)}to{transform:translate(28px,36px) scale(1.08)}}
+
+/* ─── GLASS ─── */
+.g{
+  background:var(--gb);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border:1.5px solid var(--gbd);
+  box-shadow:0 8px 32px var(--gbs);
+  border-radius:24px;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);
+  z-index:1000;display:flex;gap:4px;padding:9px 16px;border-radius:50px;
+  background:rgba(255,255,255,0.42);backdrop-filter:blur(20px);
+  border:1.5px solid var(--gbd);box-shadow:0 4px 20px rgba(244,114,182,0.13);
+}
+nav a{
+  text-decoration:none;color:var(--tm);font-size:.79rem;font-weight:500;
+  padding:6px 13px;border-radius:30px;transition:background .22s,color .22s;letter-spacing:.04em;
+}
+nav a:hover,nav a.on{background:var(--pk2);color:#fff}
+
+/* ─── SECTIONS ─── */
+.wrap{position:relative;z-index:1;padding:90px 5vw 60px;max-width:1120px;margin:0 auto}
+.lbl{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pk3);font-weight:500;margin-bottom:8px}
+.ttl{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);color:var(--td);margin-bottom:38px;line-height:1.15}
+.it{font-style:italic;color:var(--pk4)}
+
+/* ─── HERO ─── */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:110px}
+.hi{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;width:100%}
+.ht .gr{font-size:.87rem;letter-spacing:.15em;color:var(--pk3);text-transform:uppercase;margin-bottom:14px}
+.ht h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5.5vw,4.7rem);line-height:1.05;color:var(--td);margin-bottom:18px}
+.ht h1 em{font-style:italic;color:var(--pk4)}
+.ht>p{font-size:1rem;color:var(--tm);line-height:1.75;max-width:420px;margin-bottom:34px}
+.bg{display:flex;gap:13px;flex-wrap:wrap}
+.bp{
+  background:linear-gradient(135deg,var(--pk3),var(--pk4));color:#fff;border:none;
+  padding:12px 26px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:.88rem;
+  font-weight:500;text-decoration:none;display:inline-block;
+  transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(219,39,119,.28);
+}
+.bp:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(219,39,119,.38)}
+.bgh{
+  background:transparent;color:var(--pk4);border:1.5px solid var(--pk2);
+  padding:11px 26px;border-radius:50px;font-family:'DM Sans',sans-serif;
+  font-size:.88rem;font-weight:500;text-decoration:none;display:inline-block;transition:background .2s;
+}
+.bgh:hover{background:var(--pk1)}
+
+.hc{padding:32px;display:flex;flex-direction:column;gap:18px}
+.av{
+  width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(135deg,#fbb6ce,#f9a8d4,#e879f9);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;box-shadow:0 6px 22px rgba(244,114,182,.3);
+}
+.hc h3{font-family:'Playfair Display',serif;font-size:1.32rem;color:var(--td)}
+.rl{color:var(--tl);font-size:.84rem;margin-top:3px}
+.sr{display:flex;gap:9px;flex-wrap:wrap}
+.sp{
+  padding:7px 13px;border-radius:20px;
+  background:rgba(255,255,255,.55);border:1px solid var(--gbd);
+  font-size:.77rem;color:var(--tm);font-weight:500;
+}
+.sp b{color:var(--pk4);font-weight:700}
+.hl{display:flex;gap:9px;flex-wrap:wrap}
+.lc{
+  display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:20px;
+  background:var(--pk1);color:var(--pk4);font-size:.77rem;font-weight:500;
+  text-decoration:none;transition:background .2s,transform .2s;
+}
+.lc:hover{background:var(--pk2);color:#fff;transform:translateY(-2px)}
+
+/* ─── ABOUT ─── */
+#about .ag{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.at{padding:30px}
+.at p{line-height:1.82;color:var(--tm);font-size:.96rem}
+.at p+p{margin-top:13px}
+.af{padding:30px;display:flex;flex-direction:column;gap:16px}
+.fi{display:flex;align-items:center;gap:13px}
+.fic{
+  width:40px;height:40px;flex-shrink:0;border-radius:12px;
+  background:linear-gradient(135deg,var(--pk1),var(--lav));
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.fi strong{display:block;font-size:.88rem;color:var(--td)}
+.fi small{color:var(--tl);font-size:.78rem}
+
+/* ─── SKILLS ─── */
+#skills .sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:17px}
+.sc{padding:23px;transition:transform .25s}
+.sc:hover{transform:translateY(-6px)}
+.scat{font-size:.71rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pk3);margin-bottom:13px;font-weight:500}
+.st{display:flex;flex-wrap:wrap;gap:7px}
+.tg{
+  padding:5px 13px;border-radius:20px;
+  background:rgba(255,255,255,.56);border:1px solid var(--gbd);
+  font-size:.78rem;color:var(--tm);font-weight:500;transition:background .2s,color .2s;
+}
+.tg:hover{background:var(--pk1);color:var(--pk4)}
+
+/* ─── PROJECTS ─── */
+#projects .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:19px}
+.pc{padding:26px;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.pc::before{
+  content:'';position:absolute;top:-55px;right:-55px;width:110px;height:110px;
+  background:radial-gradient(circle,rgba(244,114,182,.17),transparent 70%);border-radius:50%;
+}
+.pc:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(244,114,182,.22)}
+.pe{font-size:1.9rem;margin-bottom:13px}
+.pc h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--td);margin-bottom:9px}
+.pc>p{font-size:.85rem;color:var(--tm);line-height:1.65;margin-bottom:15px}
+.pt{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tt{padding:3px 10px;background:var(--pk1);color:var(--pk4);border-radius:12px;font-size:.71rem;font-weight:500}
+.pl{font-size:.81rem;color:var(--pk4);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
+.pl:hover{gap:10px}
+
+/* ─── ACHIEVEMENTS ─── */
+#achievements .acg{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:17px}
+.acc{padding:28px 20px;text-align:center;transition:transform .25s}
+.acc:hover{transform:translateY(-6px)}
+.aci{font-size:2.1rem;margin-bottom:11px}
+.acn{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--pk4);line-height:1;margin-bottom:5px}
+.acl{font-size:.81rem;color:var(--tm);font-weight:500;line-height:1.4}
+.acs{font-size:.72rem;color:var(--tl);margin-top:4px}
+.pll{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px}
+.plk{
+  flex:1;min-width:240px;padding:17px 22px;
+  display:flex;align-items:center;gap:13px;text-decoration:none;transition:transform .2s;
+}
+.plk:hover{transform:translateY(-4px)}
+.pli{font-size:1.8rem}
+.pln{font-weight:600;color:var(--td);font-size:.91rem}
+.pls{font-size:.77rem;color:var(--tl);margin-top:2px}
+.pla{margin-left:auto;color:var(--pk3);font-size:1.1rem}
+
+/* ─── CONTACT ─── */
+#contact .ci{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.cc{padding:32px}
+.cc h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:11px}
+.cc>p{color:var(--tm);line-height:1.72;font-size:.93rem;margin-bottom:24px}
+.cl{display:flex;flex-direction:column;gap:11px}
+.cr{
+  display:flex;align-items:center;gap:13px;padding:12px 17px;border-radius:15px;
+  background:rgba(255,255,255,.46);border:1px solid var(--gbd);
+  text-decoration:none;color:var(--td);font-size:.87rem;transition:background .2s,transform .2s;
+}
+.cr:hover{background:var(--pk1);transform:translateX(7px)}
+.cic{font-size:1.1rem}
+.fc{padding:32px}
+.fg{margin-bottom:15px}
+.fg label{display:block;font-size:.77rem;color:var(--tm);margin-bottom:5px;font-weight:500;letter-spacing:.05em}
+.fg input,.fg textarea{
+  width:100%;background:rgba(255,255,255,.44);border:1.5px solid var(--gbd);
+  border-radius:13px;padding:11px 15px;font-family:'DM Sans',sans-serif;
+  font-size:.89rem;color:var(--td);outline:none;resize:none;transition:border-color .2s,background .2s;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--pk3);background:rgba(255,255,255,.65)}
+.fg textarea{height:108px}
+
+/* ─── FOOTER ─── */
+footer{position:relative;z-index:1;text-align:center;padding:34px 20px;color:var(--tl);font-size:.81rem}
+footer span{color:var(--pk3)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  .hi,#about .ag,#contact .ci{grid-template-columns:1fr}
+  nav{gap:2px;padding:7px 9px}
+  nav a{padding:5px 8px;font-size:.71rem}
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--pk2);border-radius:10px}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur">🎀</div>
+
+<!-- BG -->
+<div class="blobs">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="blob b3"></div><div class="blob b4"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="wrap" style="padding-top:0;max-width:100%;padding-left:5vw;padding-right:5vw">
+  <div class="hi">
+    <div class="ht">
+      <p class="gr">✦ Computer Science Student</p>
+      <h1>I'm <em>Rachana</em><br/>Dutta</h1>
+      <p>A passionate computer science student who loves solving problems, building meaningful products, and contributing to open source — one commit at a time.</p>
+      <div class="bg">
+        <a href="#projects" class="bp">View My Work ↓</a>
+        <a href="#contact" class="bgh">Get in Touch</a>
+      </div>
+    </div>
+    <div class="g hc">
+      <div class="av">🌸</div>
+      <div>
+        <h3>Rachana Dutta</h3>
+        <p class="rl">Computer Science Student · Open Source Contributor</p>
+      </div>
+      <div class="sr">
+        <div class="sp">🧩 Problems: <b>366</b></div>
+        <div class="sp">⭐ Rating: <b>1642</b></div>
+        <div class="sp">🔀 PRs: <b>2 Merged</b></div>
+      </div>
+      <div class="hl">
+        <a href="https://github.com/rachanadutta" target="_blank" class="lc">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://leetcode.com/u/rachanadutta/" target="_blank" class="lc">🧩 LeetCode</a>
+        <a href="mailto:rupssdutta2104@gmail.com" class="lc">✉️ Email</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+<div class="wrap">
+  <p class="lbl">— Who I Am</p>
+  <h2 class="ttl">About <span class="it">Me</span></h2>
+  <div class="ag">
+    <div class="g at">
+      <p>Hi! I'm Rachana Dutta — a developer driven by curiosity and a love for crafting elegant solutions. I enjoy the whole journey of building software, from designing clean architectures to debugging the trickiest edge cases.</p>
+      <p>I'm passionate about competitive programming and have solved <strong>366+ problems</strong> on LeetCode, reaching a rating of <strong>1642</strong>. Beyond competitive coding, I believe deeply in giving back through open source.</p>
+      <p>I've had the privilege of contributing to <strong>Apache Airflow</strong> — one of the world's most widely used workflow orchestration platforms — with <strong>2 successfully merged pull requests</strong>.</p>
+    </div>
+    <div class="g af">
+      <div class="fi"><div class="fic">🎯</div><div><strong>Competitive Programmer</strong><small>366 problems · Rating 1642 on LeetCode</small></div></div>
+      <div class="fi"><div class="fic">🌍</div><div><strong>Open Source Contributor</strong><small>2 Merged PRs in Apache Airflow</small></div></div>
+      <div class="fi"><div class="fic">🤖</div><div><strong>Machine Learning Enthusiast</strong><small>Exploring the intersection of CS and AI</small></div></div>
+      <div class="fi"><div class="fic">🛠️</div><div><strong>Full-Stack Builder</strong><small>Backend APIs to beautiful interfaces</small></div></div>
+      <div class="fi"><div class="fic">📚</div><div><strong>Continuous Learner</strong><small>Always exploring what's next</small></div></div>
+      <div class="fi"><div class="fic">✉️</div><div><strong>rupssdutta2104@gmail.com</strong><small>Open to collabs &amp; opportunities</small></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+<div class="wrap">
+  <p class="lbl">— What I Know</p>
+  <h2 class="ttl">Technical <span class="it">Skills</span></h2>
+  <div class="sg">
+    <div class="g sc"><p class="scat">💻 Languages</p><div class="st"><span class="tg">Python</span><span class="tg">Java</span><span class="tg">JavaScript</span><span class="tg">SQL</span></div></div>
+    <div class="g sc"><p class="scat">🌐 Web Development</p><div class="st"><span class="tg">React</span><span class="tg">HTML/CSS</span><span class="tg">REST APIs</span><span class="tg">Tailwind CSS</span></div></div>
+    <div class="g sc"><p class="scat">⚙️ Tools &amp; DevOps</p><div class="st"><span class="tg">Git</span><span class="tg">GitHub</span><span class="tg">Docker</span><span class="tg">Apache Airflow</span></div></div>
+    <div class="g sc"><p class="scat">🗄️ Databases</p><div class="st"><span class="tg">MySQL</span><span class="tg">MongoDB</span></div></div>
+    <div class="g sc"><p class="scat">🧠 CS Fundamentals</p><div class="st"><span class="tg">Data Structures</span><span class="tg">Algorithms</span><span class="tg">OOP</span><span class="tg">OS</span><span class="tg">DBMS</span><span class="tg">Networking</span></div></div>
+    <div class="g sc"><p class="scat">🔀 Open Source</p><div class="st"><span class="tg">Apache Airflow</span><span class="tg">PR Reviews</span><span class="tg">Core</span><span class="tg">Docs</span></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects">
+<div class="wrap">
+  <p class="lbl">— What I've Built</p>
+  <h2 class="ttl">Featured <span class="it">Projects</span></h2>
+  <div class="pg">
+    <div class="g pc">
+      <div class="pe">📊</div>
+      <h3>AI Resume Builder</h3>
+      <p>This is a full-stack AI-powered resume builder. Users can create resumes with multiple sections, select templates, and download their resumes as PDFs. The front-end is built with React and Tailwind CSS, and the back-end uses Node.js, Express, MongoDB, and Puppeteer for PDF generation.</p>
+      <div class="pt"><span class="tt">MERN</span><span class="tt">MongoDB</span><span class="tt">Puppeteer</span></div>
+      <a href="https://rachanadutta.github.io/ai-resume-builder/" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="g pc">
+      <div class="pe">🌐</div>
+      <h3>Burnout Guard</h3>
+      <p>BurnoutGuard is an interactive machine learning application that predicts the risk of student burnout using behavioral and lifestyle indicators.</p>
+      <div class="pt"><span class="tt">Python</span><span class="tt">Machine Learning</span><span class="tt">Model Deployment</span></div>
+      <a href="https://burnout-risk-predictor.streamlit.app/" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="g pc">
+      <div class="pe">🤖</div>
+      <h3>Business Website</h3>
+      <p>A sleek restaurant website showcasing appetizing menus, contact information, google maps integration, and review sections.</p>
+      <div class="pt"><span class="tt">JavaScript</span><span class="tt">HTML</span><span class="tt">CSS</span></div>
+      <a href="https://rachanadutta.github.io/restaurant/" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="g pc">
+      <div class="pe">🔗</div>
+      <h3>Apache Airflow Contributions</h3>
+      <p>Bug fixes and enhancements to Apache Airflow — a globally used open-source workflow management platform with millions of users.</p>
+      <div class="pt"><span class="tt">React</span><span class="tt">Open Source</span><span class="tt">2 Merged PRs</span></div>
+      <a href="https://github.com/pulls?q=is%3Apr+author%3Arachanadutta+archived%3Afalse+is%3Aclosed" target="_blank" class="pl">View Apache Airflow Contributions→</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ ACHIEVEMENTS ══ -->
+<section id="achievements">
+<div class="wrap">
+  <p class="lbl">— My Milestones</p>
+  <h2 class="ttl">Achievements &amp; <span class="it">Stats</span></h2>
+  <div class="acg">
+    <div class="g acc">
+      <div class="aci">🧩</div>
+      <div class="acn"><span class="cu" data-t="366">0</span></div>
+      <div class="acl">LeetCode Problems Solved</div>
+      <div class="acs">Daily grind, consistent growth</div>
+    </div>
+    <div class="g acc">
+      <div class="aci">⭐</div>
+      <div class="acn"><span class="cu" data-t="1642">0</span></div>
+      <div class="acl">LeetCode Contest Rating</div>
+      <div class="acs">Competitive programmer</div>
+    </div>
+    <div class="g acc">
+      <div class="aci">🔀</div>
+      <div class="acn"><span class="cu" data-t="2">0</span></div>
+      <div class="acl">Merged PRs — Apache Airflow</div>
+      <div class="acs">Real-world open source impact</div>
+    </div>
+    <div class="g acc">
+      <div class="aci">🌍</div>
+      <div class="acn">OSS</div>
+      <div class="acl">Apache Airflow Contributor</div>
+      <div class="acs">Top open-source workflow platform</div>
+    </div>
+  </div>
+  <div class="pll">
+    <a href="https://leetcode.com/u/rachanadutta/" target="_blank" class="g plk">
+      <div class="pli">🧩</div>
+      <div><div class="pln">LeetCode Profile</div><div class="pls">rachanadutta · 366 solved · Rating 1642</div></div>
+      <span class="pla">↗</span>
+    </a>
+    <a href="https://github.com/rachanadutta" target="_blank" class="g plk">
+      <div class="pli">🐙</div>
+      <div><div class="pln">GitHub Profile</div><div class="pls">rachanadutta · 2 merged PRs in apache/airflow</div></div>
+      <span class="pla">↗</span>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+<div class="wrap">
+  <p class="lbl">— Let's Connect</p>
+  <h2 class="ttl">Get in <span class="it">Touch</span></h2>
+  <div class="ci">
+    <div class="g cc">
+      <h3>Say Hello 🌸</h3>
+      <p>I'm open to new opportunities, collaborations, and conversations. Whether you have a project idea, a job offer, or just want to chat about code — I'd love to hear from you!</p>
+      <div class="cl">
+        <a href="mailto:rupssdutta2104@gmail.com" class="cr"><span class="cic">✉️</span> rupssdutta2104@gmail.com</a>
+        <a href="https://github.com/rachanadutta" target="_blank" class="cr"><span class="cic">🐙</span> github.com/rachanadutta</a>
+        <a href="https://leetcode.com/u/rachanadutta/" target="_blank" class="cr"><span class="cic">🧩</span> leetcode.com/u/rachanadutta</a>
+      </div>
+    </div>
+    <div class="g fc">
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Jane Doe"/></div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="jane@example.com"/></div>
+      <div class="fg"><label>Message</label><textarea placeholder="Hello Rachana, I'd love to..."></textarea></div>
+      <button class="bp" style="width:100%;text-align:center;border:none;font-size:.91rem;padding:13px;" onclick="sendMsg(this)">Send Message 🌸</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer><p>Crafted with <span>♡</span> by Rachana Dutta · 2025</p></footer>
+
+<script>
+// ── CURSOR ──
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', function(e){
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+});
+
+// ── COUNTER ANIMATION ──
+function animCount(el, target){
+  let v = 0;
+  const step = Math.max(1, Math.ceil(target / 60));
+  const t = setInterval(function(){
+    v = Math.min(v + step, target);
+    el.textContent = v.toLocaleString();
+    if(v >= target) clearInterval(t);
+  }, 18);
+}
+
+// ── INTERSECTION OBSERVER (counters only) ──
+const io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.cu:not([data-done])').forEach(function(el){
+        el.setAttribute('data-done','1');
+        animCount(el, parseInt(el.getAttribute('data-t')));
+      });
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.acg').forEach(function(el){ io.observe(el); });
+
+// ── FORM ──
+function sendMsg(btn){
+  var o = btn.textContent;
+  btn.textContent = '✓ Message Sent!';
+  btn.style.background = 'linear-gradient(135deg,#86efac,#22c55e)';
+  setTimeout(function(){ btn.textContent = o; btn.style.background = ''; }, 3000);
+}
+
+// ── NAV ACTIVE ──
+var secs = [].slice.call(document.querySelectorAll('section[id]'));
+var lnks = [].slice.call(document.querySelectorAll('nav a'));
+window.addEventListener('scroll', function(){
+  var cur2 = '';
+  secs.forEach(function(s){ if(window.scrollY >= s.offsetTop - 150) cur2 = s.id; });
+  lnks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+cur2); });
+},{passive:true});
+</script>
+</body>
+</html>
